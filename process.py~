@@ -11,7 +11,7 @@ import numpy as np
 # define a dataframe and load data from HDFS
 sc = SparkContext(appName="LDA_resume")
 sqlContext = SQLContext(sc)
-data = sqlContext.read.format("json").load("file:///home/hadoop_1/ResumeProject/imagetotest/Data/data.json")
+data = sqlContext.read.format("json").load("file:///home/hadoop_1/imagetotest/Data/data.json")
 
 # create a temp table "resume_text", use sql to get id and text information only
 data.registerTempTable("resume_text")
@@ -89,6 +89,6 @@ for i in range(3):
 	x.append(new_document[i][1].toArray())
 
 print(type(x))
-res = np.dot(x,y)/len(vocabulary)
+res = np.dot(x,y)
 print(res)
 	

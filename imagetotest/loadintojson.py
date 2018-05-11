@@ -12,7 +12,7 @@ print(filenames)
 for i in range(num_document):
 	
 	text = image_to_string(Image.open(filenames[i]))
-	data.append({ 'id' : i, 'text': text, 'label': label[i]}) 
+	data.append({ 'id' : i, 'text': text.encode('ascii', 'ignore'), 'label': label[i]}) 
 
 with open('./Data/data.json', 'w') as outfile:  
     json.dump(data, outfile)
